@@ -1,0 +1,7 @@
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let dailyForecast of dailyForecastGroup">
+      <img *ngFor="let weatherDetails of dailyForecast.weather" src="http://openweathermap.org/img/w/{{weatherDetails.icon}}.png" alt="{{ weatherDetails.description }}">
+      <p class="font-weight-bold" [ngStyle]="{'display': 'inline-block', 'vertical-align': 'top', 'margin': '0'}">{{ dailyForecast.dt_txt | date:"EEEE, MMMM, h:mm a" }}<br>
+        TEMP: {{ dailyForecast.main.temp }}&deg;</p>
+    </li>
+</ul>

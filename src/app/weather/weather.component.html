@@ -1,0 +1,20 @@
+<div class="row justify-content-center">
+    <div class="col-sm-12 mb-4">
+        <h1 class="text-center">{{ cityName }}</h1>
+        <form [formGroup]="forecastForm" [style.text-align]="'center'" (ngSubmit)="getCity()">
+            <div class="form-group">
+                <label>City Name:</label>
+                <input type="text"
+                        formControlName="cityName"
+                        [ngStyle]="{'display': 'inline-block', 'width': 'auto', 'vertical-align': 'top'}"
+                        class="form-control"
+                        (input)="clearBackendValidation()">
+                <button class="btn btn-primary" type="submit" (click)="getCity()" [disabled]="!forecastForm.valid">search</button>
+                <small *ngIf="forecastForm.controls.cityName.dirty && !forecastForm.controls.cityName.value" class="form-text text-danger">The city name can not be empty</small>
+                <small *ngIf="backendValidation" class="form-text text-danger">City {{ backendValidation.statusText }}</small>
+            </div>
+        </form>
+    </div>
+    <wh-weather-forecast class="col-sm-12 col-lg-5 mb-md-5" *ngIf="dailyForecastGroup.length !== 0" [dailyForecastGroup]="dailyForecastGroup"></wh-weather-forecast>
+    <wh-weather-chart class="col-sm-12 col-lg-5" *ngIf="dailyForecastGroup.length !== 0" [dailyForecastGroup]="dailyForecastGroup"></wh-weather-chart>
+</div>

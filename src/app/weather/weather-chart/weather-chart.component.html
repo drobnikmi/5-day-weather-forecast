@@ -1,0 +1,12 @@
+<div style="display: block">
+    <canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+
+  <p class="font-weight-bold text-center text-info mt-5">The average pressure for the week: {{avarage | number: '1.0-2'}}</p>
